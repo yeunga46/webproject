@@ -11,8 +11,24 @@ Things you can do with the phone database: <br>
 <hr>
 This file ("<?php echo basename($_SERVER["PHP_SELF"]) ?>") was last modified at:<i>
 <?php
-    echo strftime("%A, %e %B %Y, %I:%M:%S %p",
-                  filemtime ( basename ($_SERVER["PHP_SELF"])));
+$exclude = array();
+$questons = array();
+$max = 50;
+$n = rand(1,1000);
+$i=0;
+while( $i <> 20)
+{
+if(!in_array($n,$exclude) )
+{
+array_push($exclude,$n);
+$questions[$i]= $n;
+$n = rand(1,1000);
+echo "<p>".$questions[$i]."</p>";
+$i = $i +1;
+}
+}
+var_dump($questions);
 ?>
+
 </i>
 
