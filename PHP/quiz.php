@@ -131,6 +131,21 @@
   </tr>
 </table>
 
+
+<div>QUESTION</div>
+<form id="fillin">
+Answer:  <input type="text" name='phone'><br>
+<input type = "submit">
+</form>
+<form id="choice">
+Answer:<br>
+<input type="radio" id="a" name="choose" value="a">a<br>
+<input type="radio" id="b" name="choose" value="b">b<br>
+<input type="radio" id="c" name="choose" value="c">c<br>
+<input type="radio" id="d" name="choose" value="d">d<br>
+<input type="submit">
+</form>
+
 <button type="button" onclick="alert('Next')">Next</button>
 <button type="button" onclick="alert('Quit')">Quit</button>
 </div>
