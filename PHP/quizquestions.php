@@ -77,16 +77,15 @@ if ($do == 'getQuiz') {
 		$second = $result['fake2'];
 		$third = $result['fake3'];
 		$fourth = $result['correct_answer'];
-		if (isset($first) && isset($second) && isset($third)) {
-			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'c3' => $third, 'c4' => $fourth, 'type' => "MC", 'qid' => $id));
-		} elseif (isset($first) && isset($second)) {
-			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'c3' => $fourth, 'type' => "MC", 'qid' => $id));
-		} elseif (isset($first)) {
-			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $fourth, 'type' => "MC", 'qid' => $id));
-		} else {
+		if (is_null($first) && is_null($second) && is_null($third)) {
 			array_push($quiz, array('question' => $ques, 'type' => "SA", 'qid' => $id));
+		} elseif (is_null($first) && is_null($second)) {
+			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'type' => "MC", 'qid' => $id));
+		} elseif (is_null($first)) {
+			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'c3' => $third, 'type' => "MC", 'qid' => $id));
+		} else {
+			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'c3' => $third, 'c4' => $fourth, 'type' => "MC", 'qid' => $id));
 		}
-	}
 
 	echo json_encode($quiz);
 }
