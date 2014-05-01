@@ -79,14 +79,14 @@ if ($do == 'getQuiz') {
 		$fourth = $result['correct_answer'];
 		if (is_null($first) && is_null($second) && is_null($third)) {
 			array_push($quiz, array('question' => $ques, 'type' => "SA", 'qid' => $id));
-		} elseif (is_null($first) && is_null($second)) {
-			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'type' => "MC", 'qid' => $id));
-		} elseif (is_null($first)) {
-			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'c3' => $third, 'type' => "MC", 'qid' => $id));
+		} elseif (is_null($second) && is_null($third)) {
+			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $fourth, 'type' => "MC", 'qid' => $id));
+		} elseif (is_null($third)) {
+			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'c3' => $fourth, 'type' => "MC", 'qid' => $id));
 		} else {
 			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'c3' => $third, 'c4' => $fourth, 'type' => "MC", 'qid' => $id));
 		}
-
+	}
 	echo json_encode($quiz);
 }
 if ($do == 'check') {
