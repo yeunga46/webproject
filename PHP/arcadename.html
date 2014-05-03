@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title>Power bar</title>
+  <meta charset="utf-8" />
+  <meta name="Author" content="Jason Fiduk" />
+  <meta name="generator" content="emacs" />
+ <script type="text/javascript" src="powerbar.js"> </script>
+ <script type="text/javascript"
+          src="http://code.jquery.com/jquery-1.9.0.min.js"> </script>
+</head>
+
+<body>
+<!-- start button will start the power bar and set the size of the bar dependin\
+g on th energy.  This size set can probably be done earlier when we have clicka\
+ble marbles !-->
+<input type="button" id="Quit" value="Quit" onclick="$(Quit).hide();runScript();">
+<div style="display:none;
+    z-index:10000;
+    background-color:#333;
+    width:675px;
+    min-height:200px;
+    border:1px solid #666;"id="outer" value= "">
+<div style="position:fixed; border-bottom:3px solid; width:15px;  top:30%;"id="name1">A</div>
+<div style="position:fixed; border-bottom:3px solid; width:15px; left:25px; top:30%;"id="name2">A</div>
+<div style="position:fixed; border-bottom:3px solid; width:15px; left:45px; top:30%;"id="name3">A</div>
+</div>
+<script>
+function runScript(){
+$('#outer').show();
+var charcounter = 65;
+var spot = 1;
+var p = $('#name'+spot);
+
+var blink;
+blink = setInterval(function(){
+p.animate({opacity: 0.2}, 250, 'linear')
+     .animate({opacity: 1}, 250, 'linear')},500);
+$(document).keydown(function(e){
+if(e.keyCode==38)
+{
+if(charcounter == 122){
+charcounter= 48
+}
+else if(charcounter ==90){
+charcounter=97;
+}
+else{
+charcounter++;
+}
+$('#name'+spot).text(String.fromCharCode(charcounter));
+}
+if(e.keyCode==40)
+{
+if( charcounter ==48){
+charcounter = 122;
+}
+else if(charcounter ==97){
+charcounter=90;
+}
+else{
+charcounter--;
+}
+$('#name'+spot).text(String.fromCharCode(charcounter));
+}
+if(e.keyCode==13)
+{
+window.clearInterval(blink);
+charcounter=65;
+spot++;
+p = $("#name"+spot);
+ blink = setInterval(function(){
+p.animate({opacity: 0.2}, 250, 'linear')
+     .animate({opacity: 1}, 250, 'linear')},500);
+if(spot > 3)
+{
+//$("#outer").val('$('#name1').text()+$('#name2').text()+$('#name3').text()');
+console.log(getName());
+}
+
+console.log("enter pressed");
+}});
+}
+function getName(){
+$.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "quit.php",
+        data: { name: $('#name1').text()+$('#name2').text()+$('#name3').text() },
+        async: false,
+        success: function (data) {
+            alert(data);
+            return true;
+        }
+    });
+return $('#name1').text()+$('#name2').text()+$('#name3').text();
+}
+
+function getcorrect(){
+return 5;
+}
+function gettotalQuestions(){
+return 15;
+}
+function getTime(){
+return 100;
+}
+console.log(getName());
+</script>
+</body>
+</html>
