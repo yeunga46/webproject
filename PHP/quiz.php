@@ -93,21 +93,6 @@
 							return false;
 						});
 
-						// var source = $("#infopanel-template").html();
-						// var template = Handlebars.compile(source);
-						//
-						// var html = template(response);
-						// $('.panel-wrapper').html(html);
-						//
-						// $("#accordion > li > div").click(function() {
-						//
-						// if (false == $(this).next().is(':visible')) {
-						// $('#accordion ul').slideUp(300);
-						// }
-						// $(this).next().slideToggle(300);
-						// });
-						//
-						// $('#accordion ul:eq(0)').show();
 					}
 				});
 			});
