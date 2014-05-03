@@ -33,6 +33,15 @@
 						var i = 0, tries = 3, correct = 0;
 
 						nextQuestion();
+						function contains(elem, arr) {
+							if (arr != null) {
+								for (var i in arr) {
+									if (arr[i] == elem)
+										return true;
+								}
+							}
+							return false;
+						}
 
 						function nextQuestion() {
 							if (i < quiz.length) {
@@ -47,6 +56,36 @@
 								if (quiz[i]['type'] == "MC") {
 									$("#fillin").hide();
 									$("#choice").show();
+									var arr = [];
+									var x;
+									var mc = [];
+									for (var a in quiz[i]) {
+										mc.push(a);
+									}
+									document.getElementById('answersBox').innerHTML = '';
+									for (var j = 0; j < mc.length - 3; j++) {
+
+										do {
+
+											x = Math.floor((Math.random() * (mc.length - 3)) + 1);
+										} while(contains(x,arr));
+										arr.push(x);
+
+										var c = "c" + x;
+										var choiceSelection = document.createElement('input');
+										var choiceLabel = document.createElement('label');
+
+										choiceSelection.setAttribute('type', 'radio');
+										choiceSelection.setAttribute('name', 'choice');
+										choiceSelection.setAttribute('value', quiz[i][c]);
+
+										choiceLabel.innerHTML = quiz[i][c];
+										choiceLabel.setAttribute('for', quiz[i][c]);
+
+										document.getElementById('answersBox').appendChild(choiceSelection);
+										document.getElementById('answersBox').appendChild(choiceLabel);
+
+									}
 								}
 							}
 						}
@@ -60,9 +99,7 @@
 
 						$('#fillin').bind('submit', function() {
 							var value = $("#response").val();
-							console.log(i);
-							console.log(value);
-							console.log(quiz[i]['qid']);
+
 							$.ajax({
 								url : "./quizquestions.php?action=check&id=" + quiz[i]['qid'] + "&response=" + value,
 								type : "GET",
@@ -70,23 +107,44 @@
 									console.log('err');
 								},
 								success : function(response) {
-									console.log(response);
-									var val = response;
+
 									if (response == 1) {
 										correct++;
-										console.log(correct);
 										$("#response").val("");
 										i++;
 										nextQuestion();
 
 									} else {
 										tries--;
-										$( "span" ).text( "You have "+ tries +" attempts left."  ).show().fadeOut( 1000 );
+										$("span").text("You have " + tries + " attempts left.").show().fadeOut(1000);
 										if (tries <= 0) {
 											tries = 3;
 											i++;
 											nextQuestion();
 										}
+									}
+								}
+							});
+							return false;
+						});
+						$('#choice').bind('submit', function() {
+							var value = $('input[name="choice"]:checked').val();
+							$.ajax({
+								url : "./quizquestions.php?action=check&id=" + quiz[i]['qid'] + "&response=" + value,
+								type : "GET",
+								error : function() {
+									console.log('err');
+								},
+								success : function(response) {
+
+									if (response == 1) {
+										correct++;
+										$("#response").val("");
+										i++;
+										nextQuestion();
+
+									} else {
+										nextQuestion();
 									}
 								}
 							});
@@ -237,24 +295,12 @@
 					Answer:
 					<input type="text" id="response">
 					<br>
-					<input type = "submit" name="answerSA" value="Submit Answer">
+					<input type = "submit" value="Submit Answer">
 				</form>
 				<form id="choice" style="display:none" >
 					Answer:
-					<br>
-					<input type="radio" id="a" name="choose" value="a">
-					a
-					<br>
-					<input type="radio" id="b" name="choose" value="b">
-					b
-					<br>
-					<input type="radio" id="c" name="choose" value="c">
-					c
-					<br>
-					<input type="radio" id="d" name="choose" value="d">
-					d
-					<br>
-					<input type="submit" onclick="">
+					<div id="answersBox"></div>
+					<input type="submit" value="Submit Choice">
 				</form>
 				<span></span>
 				<button id="skip">
