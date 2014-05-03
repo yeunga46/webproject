@@ -12,39 +12,105 @@
 
 		<!-- NOTE: Do not put "title" attribute unless there are
 		alternate stylesheets! -->
-		<link rel="stylesheet" type="text/css" href="./layout700+.css" />
-		<link rel="stylesheet" type="text/css" href="./layout699-.css" />
-
+		<!-- <link rel="stylesheet" type="text/css" href="./layout700+.css" />
+		<link rel="stylesheet" type="text/css" href="./layout699-.css" /> -->
 		<link rel="shortcut icon" href="/~yeunga46/images/tardis.png" />
-		<link rel="stylesheet" href="webline.css" />
-		
+		<!-- <link rel="stylesheet" href="webline.css" /> -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
 		<script type='text/javascript'>
-			// $(document).ready(function() {
-				// $.ajax({
-					// url : "./charts/infopanel-data/" + 248,
-					// type : "GET",
-					// error : function() {
-						// console.log('err');
-					// },
-					// success : function(response) {
+			$(document).ready(function() {
+				$.ajax({
+					url : "./quizquestions.php?action=getQuiz",
+					type : "GET",
+					error : function() {
+						console.log('err');
+					},
+					success : function(response) {
+
+						var quiz = JSON.parse(response);
+						var next = true;
+						var i = 0, tries = 3, correct = 0;
+
+						nextQuestion();
+
+						function nextQuestion() {
+							if (i < quiz.length) {
+								document.getElementById("questiontext").innerHTML = quiz[i]['question'];
+								document.getElementById("qnum").innerHTML = "#" + i;
+								document.getElementById("clock").innerHTML = i;
+
+								if (quiz[i]['type'] == "SA") {
+									$("#fillin").show();
+									$("#choice").hide();
+								}
+								if (quiz[i]['type'] == "MC") {
+									$("#fillin").hide();
+									$("#choice").show();
+								}
+							}
+						}
+
+
+						$("#skip").click(function(event) {
+							i++;
+							nextQuestion();
+							event.preventDefault();
+						});
+
+						$('#fillin').bind('submit', function() {
+							var value = $("#response").val();
+							console.log(i);
+							console.log(value);
+							console.log(quiz[i]['qid']);
+							$.ajax({
+								url : "./quizquestions.php?action=check&id=" + quiz[i]['qid'] + "&response=" + value,
+								type : "GET",
+								error : function() {
+									console.log('err');
+								},
+								success : function(response) {
+									console.log(response);
+									var val = response;
+									if (response == 1) {
+										correct++;
+										console.log(correct);
+										$("#response").val("");
+										i++;
+										nextQuestion();
+
+									} else {
+										tries--;
+										$( "span" ).text( "You have "+ tries +" attempts left."  ).show().fadeOut( 1000 );
+										if (tries <= 0) {
+											tries = 3;
+											i++;
+											nextQuestion();
+										}
+									}
+								}
+							});
+							return false;
+						});
+
 						// var source = $("#infopanel-template").html();
 						// var template = Handlebars.compile(source);
-// 
+						//
 						// var html = template(response);
 						// $('.panel-wrapper').html(html);
-// 
+						//
 						// $("#accordion > li > div").click(function() {
-// 
-							// if (false == $(this).next().is(':visible')) {
-								// $('#accordion ul').slideUp(300);
-							// }
-							// $(this).next().slideToggle(300);
+						//
+						// if (false == $(this).next().is(':visible')) {
+						// $('#accordion ul').slideUp(300);
+						// }
+						// $(this).next().slideToggle(300);
 						// });
-// 
+						//
 						// $('#accordion ul:eq(0)').show();
-					// }
-				// });
-			// });
+					}
+				});
+			});
 
 		</script>
 
@@ -157,6 +223,9 @@
 				margin: 0px;
 				padding: 0px;
 			}
+			span {
+				color: red;
+			}
 		</style>
 	</head>
 
@@ -167,25 +236,25 @@
 		<div id = "content" >
 			<table id="navbar">
 				<tr>
-					<td><a >Longest Time</a></td>
-					<td><a >Shortest Time</a></td>
-					<td><a href="">Most Correct</a></td>
-					<td><a href="">Longest Time and Most Correct</a></td>
-					<td><a href="">Fastest Average with Most Correct</a></td>
+					<td id="qnum"></td>
+					<td id"space"></td>
+					<td id="clock"></td>
 				</tr>
 			</table>
 
 			<div id ="question">
-				QUESTION
+				<p id="questiontext">
+					Turn on Javascript
+				</p>
 			</div>
 			<div id ="answer">
-				<form id="fillin">
+				<form id="fillin" style="display:none" >
 					Answer:
-					<input type="text" name='phone'>
+					<input type="text" id="response">
 					<br>
-					<input type = "submit">
+					<input type = "submit" name="answerSA" value="Submit Answer">
 				</form>
-				<form id="choice">
+				<form id="choice" style="display:none" >
 					Answer:
 					<br>
 					<input type="radio" id="a" name="choose" value="a">
@@ -200,10 +269,11 @@
 					<input type="radio" id="d" name="choose" value="d">
 					d
 					<br>
-					<input type="submit">
+					<input type="submit" onclick="">
 				</form>
-				<button type="button" onclick="alert('Next')">
-					Next
+				<span></span>
+				<button id="skip">
+					Skip
 				</button>
 				<button type="button" onclick="alert('Quit')">
 					Quit
