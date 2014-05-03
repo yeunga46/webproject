@@ -84,6 +84,8 @@ function init(quiz) {
 					return true;
 				}
 			});
+			window.location.assign("http://elvis.rowan.edu/~fidukj40/web/webProject/interface/PHP/highscore.php");
+
 			return $('#name1').text() + $('#name2').text() + $('#name3').text();
 		}
 
