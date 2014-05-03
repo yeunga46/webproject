@@ -11,21 +11,21 @@ function numOfQuestions($dbh) {
 	// fetch the data
 	try {
 		// set up query
-		$phone_query = "SELECT COUNT(*) as max FROM trivia ";
+		$question_query = "SELECT COUNT(*) as max FROM trivia ";
 		// prepare to execute (this is a security precaution)
-		$stmt = $dbh -> prepare($phone_query);
+		$stmt = $dbh -> prepare($question_query);
 		// run query
 		$stmt -> execute();
 		// get all the results from database into array of objects
-		$phonedata = $stmt -> fetchAll(PDO::FETCH_OBJ);
+		$questiondata = $stmt -> fetchAll(PDO::FETCH_OBJ);
 		// release the statement
 		$stmt = null;
-		$phonedata = get_object_vars($phonedata[0]);
+		$questiondata = get_object_vars($questiondata[0]);
 
-		$result = intval($phonedata['max']);
+		$result = intval($questiondata['max']);
 		return $result;
 	} catch(PDOException $e) {
-		die('PDO error in ListAllPhones()": ' . $e -> getMessage());
+		die('PDO error in ListAllquestions()": ' . $e -> getMessage());
 	}
 }
 
@@ -33,19 +33,19 @@ function getQuestions($dbh, $id) {
 	// fetch the data
 	try {
 		// set up query
-		$phone_query = "SELECT * FROM trivia WHERE id ='" . $id . "' limit 1";
+		$question_query = "SELECT * FROM trivia WHERE id ='" . $id . "' limit 1";
 		// prepare to execute (this is a security precaution)
-		$stmt = $dbh -> prepare($phone_query);
+		$stmt = $dbh -> prepare($question_query);
 		// run query
 		$stmt -> execute();
 		// get all the results from database into array of objects
-		$phonedata = $stmt -> fetchAll(PDO::FETCH_OBJ);
+		$questiondata = $stmt -> fetchAll(PDO::FETCH_OBJ);
 		// release the statement
 		$stmt = null;
-		$phonedata = get_object_vars($phonedata[0]);
-		return $phonedata;
+		$questiondata = get_object_vars($questiondata[0]);
+		return $questiondata;
 	} catch(PDOException $e) {
-		die('PDO error in ListAllPhones()": ' . $e -> getMessage());
+		die('PDO error in ListAllquestions()": ' . $e -> getMessage());
 	}
 }
 
@@ -87,6 +87,7 @@ if ($do == 'getQuiz') {
 			array_push($quiz, array('question' => $ques, 'c1' => $first, 'c2' => $second, 'c3' => $third, 'c4' => $fourth, 'type' => "MC", 'qid' => $id));
 		}
 	}
+
 	echo json_encode($quiz);
 }
 if ($do == 'check') {
@@ -100,9 +101,9 @@ if ($do == 'check') {
 		$check = strtolower($result['correct_answer']);
 
 		if ($check == $response) {
-			echo "true";
+			echo 1;
 		} else {
-			echo "false";
+			echo 0;
 		}
 	}
 
