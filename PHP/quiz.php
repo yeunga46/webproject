@@ -156,6 +156,25 @@
 	<body>
 
 		<h1>High-Score</h1>
+<div style="display:none; zindex:-1; background:rgba(0,0,0,0.6); height:850px;width:100%;filter:alpha(opacity=60);" id="trans">
+<div style="position: absolute; z-index:-10000; left:44%; top:45%; background-color:#333; width:300;">
+<div style="color:white">Scroll through letters with the up and down arrow. Press enter to go to next letter.</div></div>
+<div style="display:none;
+    z-index:10000;
+position:absolute;
+    left:50%;
+    top:50%;
+    background-color:#333;
+    width:300px;
+    min-height:100px;
+    border:1px solid #666;"id="outer" value= "">
+<div style="position:absolute; border-bottom:3px solid; width:25px; color:white; left:25%; top:25%; font-size:250%;"id="name1">A</div>
+<div style="position:absolute; border-bottom:3px solid; color:white;
+width:25px; left:50%;font-size:250%;top:25%; "id="name2">A</div>
+<div style="position:absolute; border-bottom:3px solid; color:white;
+width:25px; left:75%; font-size:250%;top:25%; "id="name3">A</div>
+</div>
+</div>
 
 		<div id = "content" >
 			<table id="navbar">
