@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 	<head>
-		<title>HW2 Page</title>
+		<title>K+ Quiz</title>
 		<meta charset="utf-8" />
 		<meta name="Author" content="Andy Yeung" />
 		<meta name="generator" content="pico" />
@@ -12,10 +12,8 @@
 
 		<!-- NOTE: Do not put "title" attribute unless there are
 		alternate stylesheets! -->
-		<!-- <link rel="stylesheet" type="text/css" href="./layout700+.css" />
-		<link rel="stylesheet" type="text/css" href="./layout699-.css" /> -->
-		<link rel="shortcut icon" href="/~yeunga46/images/tardis.png" />
-		<!-- <link rel="stylesheet" href="webline.css" /> -->
+		<link rel="stylesheet" type="text/css" href="./quiz.css" />
+		<link rel="shortcut icon" href="/~yeunga46/images/tardis.png"/>
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="./quiz.js"></script>
 
@@ -30,158 +28,54 @@
 					success : function(response) {
 
 						var quiz = JSON.parse(response);
-						
-						 init(quiz);
+
+						init(quiz);
 					}
 				});
 			});
 
 		</script>
 
-		<style type="text/css">
-			h1 {
-				text-align: center;
-			}
-			#content {
-				width: 70%;
-				height: 600px;
-				margin-left: auto;
-				margin-right: auto;
-				padding: 0 0 0 0;
-				vertical-align: middle;
-				border: 2px solid #000000;
-			}
-			#question {
-				width: 70%;
-				height: 50%;
-				padding-top: 25px;
-				margin-left: auto;
-				margin-right: auto;
-				vertical-align: middle;
-				border: 2px solid #000000;
-			}
-			#answer {
-				width: 70%;
-				height: 25%;
-				margin-top: 10px;
-				margin-left: auto;
-				margin-right: auto;
-				vertical-align: middle;
-				border: 2px solid #000000;
-			}
-			#content ul li {
-				list-style-type: none;
-				text-align: center;
-			}
-			#content h1 {
-				text-align: center;
-			}
-			table#navbar {
-				width: 100%;
-				height: 10%;
-				padding: 0 0 0 0;
-				color: #F8F8FF;
-				background: #1E90FF;
-				border: 1px solid #000000;
-				border-collapse: collapse;
-				margin-bottom: 25px;
-			}
-
-			table#navbar tr {
-				text-align: center;
-				margin: 0px;
-				padding: 0px;
-				border: 1px solid #000000;
-			}
-
-			table#navbar tr td {
-				border: 1px solid #000000;
-				margin: 0px;
-				padding: 0px;
-			}
-
-			table#navbar tr td a {
-				text-decoration: none;
-				margin: 0px;
-				padding: 0px;
-			}
-
-			table#navbar tr td a:hover {
-				text-decoration: underline;
-			}
-
-			table#webline {
-				width: 100%;
-				color: #3f1a0a;
-				background: #dfdbc3;
-				border: 1px solid #3f1a0a;
-				border-collapse: collapse;
-			}
-
-			table#webline tr {
-				text-align: center;
-				margin: 0px;
-				padding: 0px;
-				border: 1px solid #3f1a0a;
-			}
-
-			table#webline tr td {
-				border: 1px solid #3f1a0a;
-				margin: 0px;
-				padding: 0px;
-			}
-
-			table#webline tr td a {
-				text-decoration: none;
-				margin: 0px;
-				padding: 0px;
-			}
-
-			table#webline tr td a:hover {
-				text-decoration: underline;
-			}
-
-			table#webline tr td img {
-				vertical-align: middle;
-				border: none;
-				margin: 0px;
-				padding: 0px;
-			}
-			span {
-				color: red;
-			}
-		</style>
 	</head>
 
 	<body>
 
 		<h1>High-Score</h1>
-<div style="display:none; zindex:-1; background:rgba(0,0,0,0.6); height:850px;width:100%;filter:alpha(opacity=60);" id="trans">
-<div style="position: absolute; z-index:-10000; left:44%; top:45%; background-color:#333; width:300;">
-<div style="color:white">Scroll through letters with the up and down arrow. Press enter to go to next letter.</div></div>
-<div style="display:none;
-    z-index:10000;
-position:absolute;
-    left:50%;
-    top:50%;
-    background-color:#333;
-    width:300px;
-    min-height:100px;
-    border:1px solid #666;"id="outer" value= "">
-<div style="position:absolute; border-bottom:3px solid; width:25px; color:white; left:25%; top:25%; font-size:250%;"id="name1">A</div>
-<div style="position:absolute; border-bottom:3px solid; color:white;
-width:25px; left:50%;font-size:250%;top:25%; "id="name2">A</div>
-<div style="position:absolute; border-bottom:3px solid; color:white;
-width:25px; left:75%; font-size:250%;top:25%; "id="name3">A</div>
-</div>
-</div>
+		<div style="display:none; zindex:-1; background:rgba(0,0,0,0.6); height:850px;width:100%;filter:alpha(opacity=60);" id="trans">
+			<div style="position: absolute; z-index:-10000; left:44%; top:45%; background-color:#333; width:300;">
+				<div style="color:white">
+					Scroll through letters with the up and down arrow. Press enter to go to next letter.
+				</div>
+			</div>
+			<div style="display:none;
+			z-index:10000;
+			position:absolute;
+			left:50%;
+			top:50%;
+			background-color:#333;
+			width:300px;
+			min-height:100px;
+			border:1px solid #666;"id="outer" value= "">
+				<div style="position:absolute; border-bottom:3px solid; width:25px; color:white; left:25%; top:25%; font-size:250%;"id="name1">
+					A
+				</div>
+				<div style="position:absolute; border-bottom:3px solid; color:white;
+				width:25px; left:50%;font-size:250%;top:25%; "id="name2">
+					A
+				</div>
+				<div style="position:absolute; border-bottom:3px solid; color:white;
+				width:25px; left:75%; font-size:250%;top:25%; "id="name3">
+					A
+				</div>
+			</div>
+		</div>
 
 		<div id = "content" >
 			<table id="navbar">
 				<tr>
 					<td id="qnum"></td>
 					<td id"space"></td>
-					<td id="clock"></td>
+					<td id="clock">0</td>
 				</tr>
 			</table>
 
@@ -195,6 +89,8 @@ width:25px; left:75%; font-size:250%;top:25%; "id="name3">A</div>
 					Answer:
 					<input type="text" id="response">
 					<br>
+					<span></span>
+					<br>
 					<input type = "submit" value="Submit Answer">
 				</form>
 				<form id="choice" style="display:none" >
@@ -202,15 +98,14 @@ width:25px; left:75%; font-size:250%;top:25%; "id="name3">A</div>
 					<div id="answersBox"></div>
 					<input type="submit" value="Submit Choice">
 				</form>
-				<span></span>
+
 				<button id="skip">
 					Skip
 				</button>
-				<button type="button" onclick="alert('Quit')">
+				<button id="Quit">
 					Quit
 				</button>
 			</div>
-
 		</div>
 
 	</body>
