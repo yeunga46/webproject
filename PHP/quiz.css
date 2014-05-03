@@ -1,0 +1,134 @@
+h1 {
+	text-align: center;
+}
+#content {
+	width: 70%;
+	height: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 0 0 0;
+	vertical-align: middle;
+	border: 2px solid #000000;
+}
+#question {
+	width: 70%;
+	height: 50%;
+	padding-top: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+	border: 2px solid #000000;
+}
+#answer {
+	width: 70%;
+	height: 25%;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+	border: 2px solid #000000;
+}
+#content ul li {
+	list-style-type: none;
+	text-align: center;
+}
+#content h1 {
+	text-align: center;
+}
+table#navbar {
+	width: 100%;
+	height: 10%;
+	padding: 0 0 0 0;
+	color: #F8F8FF;
+	background: #1E90FF;
+	border: 1px solid #000000;
+	border-collapse: collapse;
+	margin-bottom: 25px;
+}
+
+table#navbar tr {
+
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #000000;
+}
+
+table#navbar tr td {
+	text-align: center;
+	border: 1px solid #000000;
+	margin: 0px;
+	padding: 0px;
+}
+#qnum {
+	
+	margin: 0px;
+	padding: 0px;
+}
+#space {
+	
+	margin: 0px;
+	padding: 50%;
+}
+
+#clock {
+	
+	margin: 0px;
+	padding: 0px;
+}
+#fillin {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+#choice {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+table#navbar tr td a:hover {
+	text-decoration: underline;
+}
+
+table#webline {
+	width: 100%;
+	color: #3f1a0a;
+	background: #dfdbc3;
+	border: 1px solid #3f1a0a;
+	border-collapse: collapse;
+}
+
+table#webline tr {
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	border: 1px solid #3f1a0a;
+}
+
+table#webline tr td {
+	border: 1px solid #3f1a0a;
+	margin: 0px;
+	padding: 0px;
+}
+
+table#webline tr td a {
+	text-decoration: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+table#webline tr td a:hover {
+	text-decoration: underline;
+}
+
+table#webline tr td img {
+	vertical-align: middle;
+	border: none;
+	margin: 0px;
+	padding: 0px;
+}
+span {
+	color: red;
+}
+
