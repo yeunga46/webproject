@@ -108,4 +108,9 @@ if ($do == 'check') {
 	}
 
 }
+if ($do == 'count') {
+
+	echo $max;
+
+}
 ?>
