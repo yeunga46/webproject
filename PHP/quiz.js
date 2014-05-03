@@ -1,5 +1,5 @@
 /**
- * quiz.js - diplays and runs a trivia quiz
+ * quiz.js - displays and runs a trivia quiz
  * @author Andy
  */
 
