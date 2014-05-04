@@ -1,3 +1,4 @@
+<!--The page for the quiz. -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 	<head>
@@ -10,13 +11,15 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="viewport" content="initial-scale=1.0" />
 
-		<!-- NOTE: Do not put "title" attribute unless there are
-		alternate stylesheets! -->
+		<!--Link to the CSS page -->
 		<link rel="stylesheet" type="text/css" href="./quiz.css" />
 		<link rel="shortcut icon" href="/~yeunga46/images/tardis.png"/>
+		<!--Link to JQuery -->
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<!--Link to the javascript page for the quiz -->
 		<script src="./quiz.js"></script>
 
+		<!--Calls quizquestions.php to get all the questions from the database randomly -->
 		<script type='text/javascript'>
 	$(document).ready(function() {
 		$.ajax({
@@ -39,7 +42,7 @@
 	</head>
 
 	<body>
-
+		<!--HTML for the name display at the end.  Only visible on clicking quit button. -->
 		 <div  id="trans">
                         <div id="info">
                             Scroll through letters with the up and down arrow. Press enter to go to next letter.
@@ -57,16 +60,18 @@
 				<tr>
 					<td id="qnum"></td>
 					<td id="space">Endurance Quiz</td>
+					<!--Where the clock is located -->
 					<td id="clock">:00</td>
 				</tr>
 			</table>
-
+			<!-- Displays if no Javascript is availabe to run-->
 			<div id ="question">
 				<p id="questiontext">
 					Turn on Javascript
 				</p>
 			</div>
 			<div id ="answer">
+			<!-- form for fill in questions-->
 				<form id="fillin" style="display:none" >
 					Answer:
 					<input type="text" id="response">
@@ -75,6 +80,7 @@
 					<br>
 					<input type = "submit" value="Submit Answer">
 				</form>
+				<!--Form for multiple choice questions -->
 				<form id="choice" style="display:none" >
 					Select:
 					<div id="answersBox"></div>
@@ -92,15 +98,5 @@
 		</div>
 
 	</body>
-	<footer>
-		<div id = "validation">
-			<table id="webline">
-				<tr>
-					<td><a href="http://elvis.rowan.edu/~yeunga46/web/"
-					title="Link to web directory"> <img src="/~yeunga46/images/tardis.png" alt="" /> A. Yeung </a></td>
-					<td style="word-spacing:1em;">Valid: <a href="http://validator.w3.org/check/referer">HTML5</a><a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3"> CSS3</a></td>
-				</tr>
-			</table>
-		</div>
-	</footer>
+	
 </html>
