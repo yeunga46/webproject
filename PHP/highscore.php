@@ -1,3 +1,5 @@
+<!-- All of the html for the highscore page.  Uses php to display tables of highscores
+Authors: Jason Fiduk and Andy Yeung-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
         <head>
@@ -10,12 +12,12 @@
                 <meta name="viewport" content="width=device-width" />
                 <meta name="viewport" content="initial-scale=1.0" />
 
-                <!-- NOTE: Do not put "title" attribute unless there are
-                alternate stylesheets! -->
+                
                 <link rel="shortcut icon" href="/~yeunga46/images/tardis.png" />
+                <!--Link to Jquery, used in navbar -->
                 <script type="text/javascript"
                 src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
-
+                <!--Link to the stylesheet for the highscore page -->
                 <link rel="stylesheet" type="text/css" href="highscore.css">
         </head>
 
@@ -23,7 +25,7 @@
 
                 <div id = "container" >
                         <h1>High-Score</h1>
-
+                      <!--Contains all the possible categories as clickable buttons. Shows and hides db tables -->
                         <table id="navbar">
                                 <tr>
                                         <td><a onmousedown="$('.records').hide(); $(longtimetable).show();" > Longest Time</a></td>
@@ -52,7 +54,7 @@
                                 require_once ('DBfuncs.php');
 
                                 $dbh = ConnectDB();
-                                //longest time *****************
+                                //Longest time table*****************
                                 $recordlist = ListLongest($dbh);
                                 echo "<table class='records' id='longtimetable'>";
                                 echo "<tbody>";
@@ -77,7 +79,7 @@
                                         echo "</tr>\n";
                                 }
                                 echo "</tbody></table>";
-                                //Shortest time *************************
+                                //Shortest time table*************************
                                 $recordlist = ListShortest($dbh);
                                 echo "<table style='display:none;' class = 'records' id='shorttimetable'>";
                                 echo "<tbody>";
@@ -102,7 +104,7 @@
                                         echo "</tr>\n";
                                 }
                                 echo "</tbody></table>";
-                                //Most Correct*********************************
+                                //Most Correct table*********************************
                                 $recordlist = ListMostCorrect($dbh);
                                 echo "<table style='display:none;' class='records' id='correcttable'>";
                                 echo "<tbody>";
@@ -127,7 +129,7 @@
                                         echo "</tr>\n";
                                 }
                                 echo "</tbody></table>";
-                                //Long time and correct*************************
+                                //Longest average time table*************************
                                 $recordlist = ListLongestCorrect($dbh);
                                 echo "<table class='records' style='display:none;' id='longcorrecttable'>";
                                 echo "<tbody>";
@@ -152,7 +154,7 @@
                                         echo "</tr>\n";
                                 }
                                 echo "</tbody></table>";
-                                //Fastest average and correct**********************
+                                //Shortest average time table**********************
                                 $recordlist = ListShortestCorrect($dbh);
                                 echo "<table style='display:none;' class='records' id='shortcorrecttable'>";
                                 echo "<tbody>";
@@ -178,23 +180,11 @@
                                 }
                                 echo "</tbody></table>";
 
-                                // uncomment next line for debugging
-                                # echo '<pre>'; print_r($phonelist); echo '</pre>';
+                                
                                 ?>
 
                         </div>
                 </div>
-                <footer>
-                        <div id = "validation">
-                                <table id="webline">
-                                        <tr>
-                                                <td><a href="http://elvis.rowan.edu/~yeunga46/web/"
-                                                title="Link to web directory"> <img src="/~yeunga46/images/tardis.png" alt="" /> A. Yeung </a></td>
-
-                                                <td style="word-spacing:1em;">Valid: <a href="http://validator.w3.org/check/referer">HTML5</a><a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3"> CSS3</a></td>
-                                        </tr>
-                                </table>
-                        </div>
-                </footer>
+              
         </body>
 </html>
