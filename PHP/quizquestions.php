@@ -1,4 +1,6 @@
 <?php
+// Used to get the questions, count, and check solution for questions based on action
+//Authors Andy Yeung and Jason Fiduk
 require_once ('/export/home/fidukj40/source_html/web/webProject/Connect.php');
 
 $dbh = ConnectDB();
@@ -6,7 +8,7 @@ $dbh = ConnectDB();
 $max = numOfQuestions($dbh);
 $quiz = array();
 $do = $_GET["action"];
-
+//gets the count of the questions in the database. Used for setting max and displaying.
 function numOfQuestions($dbh) {
 	// fetch the data
 	try {
@@ -28,7 +30,7 @@ function numOfQuestions($dbh) {
 		die('PDO error in ListAllquestions()": ' . $e -> getMessage());
 	}
 }
-
+//Grabs a questiona from the database and returns it. 
 function getQuestions($dbh, $id) {
 	// fetch the data
 	try {
@@ -48,7 +50,7 @@ function getQuestions($dbh, $id) {
 		die('PDO error in ListAllquestions()": ' . $e -> getMessage());
 	}
 }
-
+//Gets all the possible questions that havent been picked yet.  Pushes the values into an array for getting later.
 function getQuestionNum($max, $exc) {
 	$exclude = array();
 	if (isset($exc)) {
@@ -66,7 +68,8 @@ function getQuestionNum($max, $exc) {
 	}
 	return $questions;
 }
-
+//On this action, it will get the unused questions and store their ids, then get all the questions 1 at a time
+//and seperate them depending on their question type.
 if ($do == 'getQuiz') {
 	$questions = getQuestionNum($max, array());
 
@@ -90,6 +93,8 @@ if ($do == 'getQuiz') {
 
 	echo json_encode($quiz);
 }
+//Checks the answer of the question, by getting the solution to the question from the database and comparing 
+//with the players answer.  Returns 1 for correct 0 for not correct.
 if ($do == 'check') {
 
 	$id = $_GET["id"];
@@ -108,6 +113,7 @@ if ($do == 'check') {
 	}
 
 }
+//Returns the count of questions in the database for displaying on the front page.
 if ($do == 'count') {
 
 	echo $max;
