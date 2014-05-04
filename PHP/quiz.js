@@ -73,7 +73,7 @@ function init(quiz) {
 				url : "quit.php",
 				data : {
 					name : name,
-					time : currentTime,
+					time : ((new Date().getTime())-currentTime)/1000,
 					correct : correct,
 					total : i
 
