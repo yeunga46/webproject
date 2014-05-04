@@ -1,12 +1,21 @@
 /**
  * quiz.js - displays and runs a trivia quiz
- * @author Andy
+ * @author Andy Yeung and Jason Fiduk
  */
-
+/**
+ * Init runs initially on link. Starts the clock,grabs questions, and sets 
+ * all global variables up that will be needed
+ * later for the high score entry
+ */
 function init(quiz) {
 	var i = 0, tries = 3, correct = 0, currentTime, name;
 	nextQuestion();
 	runScript();
+	
+	/**
+	 * clickQuit runs only when the quit button is hit.  It clears the screen,
+	 * displays the name setter, and then sends the data to the highscore table.
+	 */
 	function clickQuit() {
 		$('#content').hide();
 		$('#trans').show();
@@ -24,7 +33,7 @@ function init(quiz) {
 			}, 250, 'linear')
 		}, 500);
 		$(document).keydown(function(e) {
-			if (e.keyCode == 38) {
+			if (e.keyCode == 38) { //up arrow
 				if (charcounter == 122) {
 					charcounter = 48
 				} else if (charcounter == 90) {
@@ -34,7 +43,7 @@ function init(quiz) {
 				}
 				$('#name' + spot).text(String.fromCharCode(charcounter));
 			}
-			if (e.keyCode == 40) {
+			if (e.keyCode == 40) { //down arrow
 				if (charcounter == 48) {
 					charcounter = 122;
 				} else if (charcounter == 97) {
@@ -44,7 +53,7 @@ function init(quiz) {
 				}
 				$('#name' + spot).text(String.fromCharCode(charcounter));
 			}
-			if (e.keyCode == 13) {
+			if (e.keyCode == 13) { //enter button
 				window.clearInterval(blink);
 				charcounter = 65;
 				spot++;
@@ -57,7 +66,7 @@ function init(quiz) {
 					}, 250, 'linear')
 				}, 500);
 				if (spot > 3) {
-					//$("#outer").val('$('#name1').text()+$('#name2').text()+$('#name3').text()');
+					
 					name = $('#name1').text() + $('#name2').text() + $('#name3').text();
 					storeScore();
 				}
@@ -65,7 +74,10 @@ function init(quiz) {
 				console.log("enter pressed");
 			}
 		});
-		// correct, and i was question number
+		/**
+		 * Takes the global variables and sends them to quit.php where it is stored in the highscore
+		 * table.  The page is then redirected to the high score page.
+		 */
 		function storeScore() {
 			$.ajax({
 				type : "GET",
@@ -89,11 +101,11 @@ function init(quiz) {
 			return $('#name1').text() + $('#name2').text() + $('#name3').text();
 		}
 
-
-		console.log("Here");
-
 	}
-
+	/**
+	 * Runs the clock that is displayed in the corner of quiz.  Gets the time the function started
+	 * , and then subtracts it from the now current time.  Only up to minutes is displayed. 
+	 */
 	function runScript() {
 		currentTime = new Date().getTime();
 		var blink;
@@ -127,16 +139,20 @@ function init(quiz) {
 		return false;
 	}
 
+        /**
+         * Gets the next question in the quiz array, and then displays the forms and questions for answering them.
+         * 
+         */
 	function nextQuestion() {
 		if (i < quiz.length) {
 			document.getElementById("questiontext").innerHTML = quiz[i]['question'];
 			document.getElementById("qnum").innerHTML = "#" + i;
 
-
+			//For type in question
 			if (quiz[i]['type'] == "SA") {
 				$("#fillin").show();
 				$("#choice").hide();
-			}
+			}//For multiple choice question
 			if (quiz[i]['type'] == "MC") {
 				$("#fillin").hide();
 				$("#choice").show();
@@ -147,6 +163,7 @@ function init(quiz) {
 					mc.push(a);
 				}
 				document.getElementById('answersBox').innerHTML = '';
+				//randomly places the answer choices in the radio buttons.
 				for (var j = 0; j < mc.length - 3; j++) {
 
 					do {
@@ -182,7 +199,8 @@ function init(quiz) {
 		nextQuestion();
 		event.preventDefault();
 	});
-
+	//Sends the answer to be checked by quizquestions.php when the submit button is clicked on a fillin question
+	//Three chances are given for these.
 	$('#fillin').bind('submit', function() {
 		var value = $("#response").val();
 
@@ -213,6 +231,8 @@ function init(quiz) {
 		});
 		return false;
 	});
+	//Sends the answer to be checked by quizquestions.php when the submit 
+	//button is clicked on a multiple choice question. Only 1 chance for these.
 	$('#choice').bind('submit', function() {
 		var value = $('input[name="choice"]:checked').val();
 		$.ajax({
