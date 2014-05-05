@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <title>Simple JavaScript Samples</title>
+  <meta charset="utf-8" />
+  <meta name="Author" content="Jason Fiduk" />
+  <meta name="generator" content="emacs" />
+  <link rel="shortcut icon" href="" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+<div onmousedown="$('#fillin').show();$('#MC').hide();">
+Fill in the blank quesiton</div>
+<div onmousedown="$('#MC').show();$('#fillin').hide();">
+Multiple choice quesiton</div>
+
+ <form action="submitpage.php" id="fillin" style="display:block" >
+<input type="hidden" name="action" value="SE">
+Question:<textarea name="question" rows="4" cols="50"></textarea><br>
+Answer:<input type="text" name="answer"><br>
+<input type = "submit" value="Submit">
+</form>
+<form action="submitpage.php" id="MC" style="display:none;" >
+<input type="hidden" name="action" value="MC">
+Question:<textarea name="question" rows="4" cols="50"></textarea><br>
+Correct Answer:<input type="text" name="answer"><br>
+Fake answer:<input type="text" name="fake1"><br>
+Fake answer:<input type="text" name="fake2"><br>
+Fake answer:<input type="text" name="fake3"><br>
+<input type = "submit" value="Submit">
+</form>
+
+</body>
+</html>
