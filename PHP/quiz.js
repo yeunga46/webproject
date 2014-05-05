@@ -25,6 +25,7 @@ function init(quiz) {
 		var p = $('#name' + spot);
 
 		var blink;
+		document.getElementById("score").innerHTML = "Your score is : " + correct + " out of " + i;
 		blink = setInterval(function() {
 			p.animate({
 				opacity : 0.2
@@ -146,7 +147,8 @@ function init(quiz) {
 	function nextQuestion() {
 		if (i < quiz.length) {
 			document.getElementById("questiontext").innerHTML = quiz[i]['question'];
-			document.getElementById("qnum").innerHTML = "#" + i;
+			document.getElementById("qnum").innerHTML = "#" + (i+1);
+			document.getElementById("cscore").innerHTML = "Total Correct: " + correct;
 
 			//For type in question
 			if (quiz[i]['type'] == "SA") {
@@ -197,6 +199,7 @@ function init(quiz) {
 	$("#skip").click(function(event) {
 		i++;
 		nextQuestion();
+		$("#response").val("");
 		event.preventDefault();
 	});
 	//Sends the answer to be checked by quizquestions.php when the submit button is clicked on a fillin question

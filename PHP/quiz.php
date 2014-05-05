@@ -44,6 +44,7 @@
 	<body>
 		<!--HTML for the name display at the end.  Only visible on clicking quit button. -->
 		 <div  id="trans">
+		 				<div id="score"></div>
                         <div id="info">
                             Scroll through letters with the up and down arrow. Press enter to go to next letter.
                          </div>
@@ -60,6 +61,7 @@
 				<tr>
 					<td id="qnum"></td>
 					<td id="space">N+ Trivia Quiz</td>
+					<td id="cscore"></td>
 					<!--Where the clock is located -->
 					<td id="clock">:00</td>
 				</tr>

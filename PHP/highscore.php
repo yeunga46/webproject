@@ -5,7 +5,7 @@ Authors: Jason Fiduk and Andy Yeung-->
         <head>
                 <title>HW2 Page</title>
                 <meta charset="utf-8" />
-                <meta name="Author" content="Andy Yeung" />
+                <meta name="Author" content="Andy Yeung and Jason Fiduk" />
                 <meta name="generator" content="pico" />
 
                 <!-- Be sure mobile devices don't try to scale up. -->
@@ -42,7 +42,7 @@ Authors: Jason Fiduk and Andy Yeung-->
                                                         <th colspan="4">Top Members</th>
                                                 </tr>
                                                 <tr class="panelsubheader">
-                                                        <td>Rank</td><td>Member</td><td>Points</td><td>Time</td>
+                                                        <td>Rank</td><td>Member</td><td>Points</td><td id = "atime">Time</td>
                                                 </tr>
                         </tbody>        </table>
                                 <?php
@@ -74,7 +74,7 @@ Authors: Jason Fiduk and Andy Yeung-->
                                         echo $number -> num_correct;
                                         echo "</td>";
                                         echo "<td>";
-                                        echo $number -> total_time;
+                                        echo gmdate("H:i:s",$number -> total_time);
                                         echo "</td>";
                                         echo "</tr>\n";
                                 }
@@ -99,7 +99,7 @@ Authors: Jason Fiduk and Andy Yeung-->
                                         echo $number -> num_correct;
                                         echo "</td>";
                                         echo "<td>";
-                                        echo $number -> total_time;
+                                        echo gmdate("H:i:s",$number -> total_time);
                                         echo "</td>";
                                         echo "</tr>\n";
                                 }
@@ -124,7 +124,7 @@ Authors: Jason Fiduk and Andy Yeung-->
                                         echo $number -> num_correct;
                                         echo "</td>";
                                         echo "<td>";
-                                        echo $number -> total_time;
+                                        echo gmdate("H:i:s",$number -> total_time);
                                         echo "</td>";
                                         echo "</tr>\n";
                                 }
@@ -179,7 +179,6 @@ Authors: Jason Fiduk and Andy Yeung-->
                                         echo "</tr>\n";
                                 }
                                 echo "</tbody></table>";
-
                                 
                                 ?>
 

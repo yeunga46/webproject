@@ -1,7 +1,7 @@
 /* CSS file for the quiz.php file.
  *Authors: Jason Fiduk and Andy Yeung
  */
-body{
+body {
 	background: #000000;
 }
 h1 {
@@ -58,7 +58,6 @@ table#navbar tr {
 
 	margin: 0px;
 	padding: 0px;
-
 }
 
 table#navbar tr td {
@@ -149,48 +148,57 @@ table#webline tr td img {
 span {
 	color: red;
 }
-#trans{
-display:none;
-height:100%;
-zindex:-1;
-background:rgba(0,0,0,0.6);
-width:100%;
-filter:alpha(opacity=60);
+#trans {
+	display: none;
+	height: 100%;
+	zindex: -1;
+	background: rgba(0,0,0,0.6);
+	width: 100%;
+	filter: alpha(opacity=60);
 }
-#info{
-position: absolute;
-z-index:-10000;
-left:44%;
-top:45%;
-background-color:#333;
-width:300;
-color:white;
+#score {
+	position: absolute;
+	z-index: -10000;
+	left: 40%;
+	top: 40%;
+	background-color: #333;
+	width: 300;
+	color: white;
 }
-#outer{
-display:none;
-z-index:10000;
-position:absolute;
-left:50%;
-top:50%;
-background-color:#333;
-width:300px;
-min-height:100px;
-border:1px solid #666;
+#info {
+	position: absolute;
+	z-index: -10000;
+	left: 40%;
+	top: 45%;
+	background-color: #333;
+	width: 300;
+	color: white;
 }
-#name1{
-left:25%;
+#outer {
+	display: none;
+	z-index: 10000;
+	position: absolute;
+	left: 40%;
+	top: 50%;
+	background-color: #333;
+	width: 300px;
+	min-height: 100px;
+	border: 1px solid #666;
 }
-#name2{
-left:50%
+#name1 {
+	left: 25%;
 }
-#name3{
-left:75%
+#name2 {
+	left: 50%
 }
-.letters{
-position:absolute;
-border-bottom:3px solid;
-width:25px;
-color:white;
-top:25%;
-font-size:250%;
+#name3 {
+	left: 75%
+}
+.letters {
+	position: absolute;
+	border-bottom: 3px solid;
+	width: 25px;
+	color: white;
+	top: 25%;
+	font-size: 250%;
 }
