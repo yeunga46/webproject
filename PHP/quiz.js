@@ -146,7 +146,7 @@ function init(quiz) {
 	function nextQuestion() {
 		if (i < quiz.length) {
 			document.getElementById("questiontext").innerHTML = quiz[i]['question'];
-			document.getElementById("qnum").innerHTML = "#" + i;
+			document.getElementById("qnum").innerHTML = "#" + i + 1;
 
 			//For type in question
 			if (quiz[i]['type'] == "SA") {
