@@ -113,7 +113,7 @@ function ListMostCorrect($dbh)
     }
 }
 
-// ListShortestCorrect() - return an array of record objects that have most 
+// ListShortestCorrect() - return an array of record objects that have most
 //correct in the shortest average time.
 // USAGE: $recordlist = ListShortestCorrect($dbh)
 // $dbh is database connection
@@ -124,7 +124,7 @@ function ListShortestCorrect($dbh)
         // set up query
         $record_query = "SELECT name,num_correct, average
  FROM (Select name,num_correct,(num_correct/total_time)as average
-From high_score)as score order by average  LIMIT 10";
+From high_score)as score where average >0 order by average  LIMIT 10";
         // prepare to execute (this is a security precaution)
         $stmt = $dbh->prepare($record_query);
         // run query
@@ -141,6 +141,7 @@ From high_score)as score order by average  LIMIT 10";
         die ('PDO error in ListShortest()": ' . $e->getMessage() );
     }
 }
+
 
 // ListLongestCorrect() - return an array of record objects that have the most
 //correct for the amount of time they took.
