@@ -59,7 +59,7 @@
 			<table id="navbar">
 				<tr>
 					<td id="qnum"></td>
-					<td id="space">Endurance Quiz</td>
+					<td id="space">N+ Trivia Quiz</td>
 					<!--Where the clock is located -->
 					<td id="clock">:00</td>
 				</tr>
