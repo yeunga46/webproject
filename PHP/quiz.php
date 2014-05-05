@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 	<head>
-		<title>K+ Quiz</title>
+		<title>N+ Trivia Quiz</title>
 		<meta charset="utf-8" />
 		<meta name="Author" content="Andy Yeung" />
 		<meta name="generator" content="pico" />
