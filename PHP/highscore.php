@@ -186,4 +186,16 @@ Authors: Jason Fiduk and Andy Yeung-->
                 </div>
               
         </body>
+        <footer>
+			<div id = "validation">
+				<table id="webline">
+					<tr>
+						<td><a href="./index.html"
+						title="Link to Main index page"> <img src="/~yeunga46/images/tardis.png" alt="" /> Main Page </a></td>
+
+						<td style="word-spacing:1em;">Valid: <a href="http://validator.w3.org/check/referer">HTML5</a><a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3"> CSS3</a></td>
+					</tr>
+				</table>
+			</div>
+		</footer>
 </html>

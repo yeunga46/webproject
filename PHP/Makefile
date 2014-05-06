@@ -10,10 +10,9 @@
 
 # These lines should be the only ones you have to change for many
 # projects.
-DESTDIR = /export/home/yeunga46/public_html/web/PHP/
-TARGETS = DBfuncs.php add.php delete.php search.php show.php foot.php index.html quiz.html highscore.php
-SOURCES = DBfuncs.php add.php delete.php search.php show.php foot.php index.html quiz.html highscore.php
-
+DESTDIR = /export/home/yeunga46/public_html/web/webProject/
+TARGETS = DBfuncs.php quiz.css quiz.js index.html index.css submitpage.php submitpage.css submitpage.html quiz.php highscore.php quizquestions.php quit.php .marioblock.png highscore.css
+SOURCES = DBfuncs.php quiz.css quiz.js index.html index.css submitpage.php submitpage.css submitpage.html  quiz.php highscore.php quizquestions.php quit.php .marioblock.png highscore.css
 
 # This target is just here to be the top target in the Makefile.
 # There's nothing to compile for this one.

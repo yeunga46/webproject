@@ -22,13 +22,15 @@ body {
 	padding-top: 20%;
 	padding-bottom: 20%;
 }
-ul {
+#startmenu ul {
 	min-width: 100px;
 	position: static;
 	top: 58%;
-	left: 45%;
+	margin-left: auto;
+	margin-right: auto;
 	z-index: 1;
 }
+
 #startmenu {
 	width: 700px;
 	margin-left: auto;

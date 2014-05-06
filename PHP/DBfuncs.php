@@ -126,7 +126,7 @@ function ListLongestCorrect($dbh)
         // set up query
         $record_query = "SELECT name,num_correct, average
  FROM (Select name,num_correct,(total_time/num_correct)as average
-From high_score)as score where average>0 order by average DESC  LIMIT 10";
+From high_score)as score order by average DESC  LIMIT 10";
 
         // prepare to execute (this is a security precaution)
         $stmt = $dbh->prepare($record_query);
