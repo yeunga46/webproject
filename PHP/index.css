@@ -1,50 +1,48 @@
 /* CSS file for the index.html file.
  *Authors: Jason Fiduk and Andy Yeung
  */
- body{
-                         background:url(http://elvis.rowan.edu/~yeunga46/web/PHP/.marioblock.png);
-                                background-size:300px 300px;
-                                background-repeat:repeat;
-               }
-#amount{
-margin-top: 0px;
-margin-bottom: 0px;
-text-align:center;
-font-size:250%;
-z-index:1;
-text-decoration:underline;
+body {
+	background: url(http://elvis.rowan.edu/~yeunga46/web/webProject/.marioblock.png);
+	background-size: 300px 300px;
+	background-repeat: repeat;
 }
-#counter{
-text-align:center;
-font-weight:bold;
-font-size:150%;
-z-index:1;
-padding-top:20%;
-padding-bottom:20%;
+#amount {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	text-align: center;
+	font-size: 250%;
+	z-index: 1;
+	text-decoration: underline;
 }
-ul{
-min-width: 100px;
-position:static;
-top: 58%;
-left:45%;
-z-index:1;
+#counter {
+	text-align: center;
+	font-weight: bold;
+	font-size: 150%;
+	z-index: 1;
+	padding-top: 20%;
+	padding-bottom: 20%;
 }
- #startmenu {
-        width: 700px ;
-        margin-left: auto ;
-        margin-right: auto ;
-        padding: 0 0 0 0;
-        vertical-align: center;
-
-    }
-      #startmenu ul li {
-          font-weight:bold;
-        visited: #000000;
-          font-size:130%;
-         list-style-type: none;
-         text-align: center;
-
-      }
-      #startmenu h1 {
-         text-align: center;
-      }
+ul {
+	min-width: 100px;
+	position: static;
+	top: 58%;
+	left: 45%;
+	z-index: 1;
+}
+#startmenu {
+	width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 0 0 0;
+	vertical-align: center;
+}
+#startmenu ul li {
+	font-weight: bold;
+	visited: #000000;
+	font-size: 130%;
+	list-style-type: none;
+	text-align: center;
+}
+#startmenu h1 {
+	text-align: center;
+}

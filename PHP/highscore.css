@@ -2,7 +2,7 @@
  *Authors: Jason Fiduk and Andy Yeung
  */
  body{
-                         background:url(http://elvis.rowan.edu/~yeunga46/web/PHP/.marioblock.png);
+                         background:url(http://elvis.rowan.edu/~yeunga46/web/webProject/.marioblock.png);
                                 background-size:300px 300px;
                                 background-repeat:repeat;
 
@@ -139,4 +139,3 @@
                                 border: none;
                                 margin: 0px;
                                 padding: 0px;
-                        }
