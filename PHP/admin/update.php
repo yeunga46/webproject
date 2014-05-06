@@ -99,8 +99,8 @@ function acceptQuestion($dbh, $id) {
 
 		$stmt -> bindParam(':question', $result['question']);
 		$stmt -> bindParam(':correct_answer', $result['correct_answer']);
-		$stmt -> bindParam(':fake1', $result['fake3']);
-		$stmt -> bindParam(':fake2', $result['fake3']);
+		$stmt -> bindParam(':fake1', $result['fake1']);
+		$stmt -> bindParam(':fake2', $result['fake2']);
 		$stmt -> bindParam(':fake3', $result['fake3']);
 
 		$stmt -> execute();
