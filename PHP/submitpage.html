@@ -2,18 +2,19 @@
 <head>
   <title>Simple JavaScript Samples</title>
   <meta charset="utf-8" />
-  <meta name="Author" content="Jason Fiduk" />
+ <meta name="Author" content="Jason Fiduk and Andy Yeung" />
   <meta name="generator" content="emacs" />
   <link rel="shortcut icon" href="" />
 <link rel="stylesheet" type="text/css" href="./submitpage.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 </head>
 <body>
+<!-- Buttons change the forms that show on click -->
 <button id="SEbutton" onclick="$('#SEbutton').hide(); $('#MCbutton').show();$('#fillin').show();$('#MC').hide();">
 Fill in the blank quesiton</button>
 <button id="MCbutton" onclick="$('#SEbutton').show(); $('#MCbutton').hide();$('#MC').show();$('#fillin').hide();">
 Multiple choice quesiton</button>
-
+<!-- Form for the fill in questions.  Passes values to php page to submit -->
  <form action="submitpage.php" id="fillin" style="display:block" >
 Fill in question form:<br>
 <input type="hidden" name="action" value="SE">
@@ -21,6 +22,7 @@ Question:<textarea name="question" rows="4" cols="50"></textarea><br>
 Answer:<input type="text" name="answer"><br>
 <input type = "submit" value="Submit">
 </form>
+<!-- Form for the multiple choice questions.  Passes values to php page to submit -->
 <form action="submitpage.php" id="MC" style="display:none;" >
 Multiple Choice question form:<br>
 <input type="hidden" name="action" value="MC">
