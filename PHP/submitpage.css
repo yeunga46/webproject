@@ -1,0 +1,24 @@
+/* CSS file for the submitpage.html file.
+ *Authors: Jason Fiduk and Andy Yeung
+ */
+body{
+background:url(http://elvis.rowan.edu/~yeunga46/web/PHP/.marioblock.png);
+background-size:300px 300px;
+background-repeat:repeat;
+   }
+button {
+position:absolute;
+left:45%;
+}
+textarea {
+resize: none;
+}
+form{
+position:absolute;
+left:35%;
+margin-top:3cm;
+}
+
+#SEbutton {
+display:none;
+}
