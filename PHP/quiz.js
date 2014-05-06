@@ -3,7 +3,7 @@
  * @author Andy Yeung and Jason Fiduk
  */
 /**
- * Init runs initially on link. Starts the clock,grabs questions, and sets 
+ * Init runs initially on link. Starts the clock,grabs questions, and sets
  * all global variables up that will be needed
  * later for the high score entry
  */
@@ -35,7 +35,7 @@ function init(quiz) {
 			}, 250, 'linear')
 		}, 500);
 		$(document).keydown(function(e) {
-			if (e.keyCode == 38) { //up arrow
+			if (e.keyCode == 38) {//up arrow
 				if (charcounter == 122) {
 					charcounter = 48
 				} else if (charcounter == 90) {
@@ -45,7 +45,7 @@ function init(quiz) {
 				}
 				$('#name' + spot).text(String.fromCharCode(charcounter));
 			}
-			if (e.keyCode == 40) { //down arrow
+			if (e.keyCode == 40) {//down arrow
 				if (charcounter == 48) {
 					charcounter = 122;
 				} else if (charcounter == 97) {
@@ -55,7 +55,7 @@ function init(quiz) {
 				}
 				$('#name' + spot).text(String.fromCharCode(charcounter));
 			}
-			if (e.keyCode == 13) { //enter button
+			if (e.keyCode == 13) {//enter button
 				window.clearInterval(blink);
 				charcounter = 65;
 				spot++;
@@ -68,7 +68,7 @@ function init(quiz) {
 					}, 250, 'linear')
 				}, 500);
 				if (spot > 3) {
-					
+
 					name = $('#name1').text() + $('#name2').text() + $('#name3').text();
 					storeScore();
 				}
@@ -87,7 +87,7 @@ function init(quiz) {
 				url : "quit.php",
 				data : {
 					name : name,
-					time : ((new Date().getTime())-currentTime)/1000,
+					time : ((new Date().getTime()) - currentTime) / 1000,
 					correct : correct,
 					total : i
 
@@ -104,9 +104,10 @@ function init(quiz) {
 		}
 
 	}
+
 	/**
 	 * Runs the clock that is displayed in the corner of quiz.  Gets the time the function started
-	 * , and then subtracts it from the now current time.  Only up to minutes is displayed. 
+	 * , and then subtracts it from the now current time.  Only up to minutes is displayed.
 	 */
 	function startClock() {
 		currentTime = new Date().getTime();
@@ -140,47 +141,52 @@ function init(quiz) {
 		}
 		return false;
 	}
-	/**
-*After 5 minutes of idle time the page redirects back to the home page.
-*/
-function detectIdle(){
-var idle = 0;
-$(document).ready(function(){
-setInterval(increment,60000);
-$(document).mousemove(function(e){ idle=0;});
-$(document).keypress(function(e){ idle=0;});
-function increment(){
-console.log("here");
-if(idle >=4)
-{
-window.blur();
-window.location.assign("./index.html");
-}
-idle++;
-}
-});
-
-}
 
 	/**
-	*Detects if tabs are changed.  If they are it redirects back to homepage
-	*/
-	function changeTab(){
-	var timer = setInterval( function(){
- 	if(document.hidden) {
- 	window.location.assign("./index.html");
-	}
-	});
+	 *After 5 minutes of idle time the page redirects back to the home page.
+	 */
+	function detectIdle() {
+		var idle = 0;
+		$(document).ready(function() {
+			setInterval(increment, 60000);
+			$(document).mousemove(function(e) {
+				idle = 0;
+			});
+			$(document).keypress(function(e) {
+				idle = 0;
+			});
+			function increment() {
+				console.log("here");
+				if (idle >= 4) {
+					window.blur();
+					window.location.assign("./index.html");
+				}
+				idle++;
+			}
+
+		});
+
 	}
 
-        /**
-         * Gets the next question in the quiz array, and then displays the forms and questions for answering them.
-         * 
-         */
+	/**
+	 *Detects if tabs are changed.  If they are it redirects back to homepage
+	 */
+	function changeTab() {
+		var timer = setInterval(function() {
+			if (document.hidden) {
+				window.location.assign("./index.html");
+			}
+		});
+	}
+
+	/**
+	 * Gets the next question in the quiz array, and then displays the forms and questions for answering them.
+	 *
+	 */
 	function nextQuestion() {
 		if (i < quiz.length) {
 			document.getElementById("questiontext").innerHTML = quiz[i]['question'];
-			document.getElementById("qnum").innerHTML = "#" + (i+1);
+			document.getElementById("qnum").innerHTML = "#" + (i + 1);
 			document.getElementById("cscore").innerHTML = "Total Correct: " + correct;
 
 			//For type in question
@@ -223,6 +229,8 @@ idle++;
 
 				}
 			}
+		} else {
+			clickQuit();
 		}
 	}
 
@@ -231,6 +239,7 @@ idle++;
 
 	$("#skip").click(function(event) {
 		i++;
+		tries = 3;
 		nextQuestion();
 		$("#response").val("");
 		event.preventDefault();
@@ -267,7 +276,7 @@ idle++;
 		});
 		return false;
 	});
-	//Sends the answer to be checked by quizquestions.php when the submit 
+	//Sends the answer to be checked by quizquestions.php when the submit
 	//button is clicked on a multiple choice question. Only 1 chance for these.
 	$('#choice').bind('submit', function() {
 		var value = $('input[name="choice"]:checked').val();
