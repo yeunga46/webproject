@@ -4,34 +4,6 @@
  * project.
  */
 
-// ListLongest() - return an array of record objects that took longest time
-// USAGE: $recordlist = ListLongest($dbh)
-// $dbh is database connection
-function ListAllPhones($dbh)
-{
-    // fetch the data
-    try {
-        // set up query
-        $phone_query = "SELECT name,total_time,num_correct,total_questions 
-FROM high_score";
-        // prepare to execute (this is a security precaution)
-        $stmt = $dbh->prepare($phone_query);
-        // run query
-        $stmt->execute();
-        // get all the results from database into array of objects
-        $phonedata = $stmt->fetchAll(PDO::FETCH_OBJ);
-        // release the statement
-        $stmt = null;
-
-        return $phonedata;
-    }
-    catch(PDOException $e)
-    {
-        die ('PDO error in ListAllPhones()": ' . $e->getMessage() );
-    }
-}
-
-
 // ListLongest() - return an array of record objects that took longest 
 // USAGE: $recordlist = ListLongest($dbh)
 // $dbh is database connection
