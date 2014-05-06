@@ -1,4 +1,5 @@
 AuthName "HTAccess Test Page"
 AuthType Basic
-AuthUserFile /export/home/yeunga46/public_html/web/PHP/admin/user.pass
+AuthUserFile 
+/export/home/yeunga46/public_html/web/webProject/admin/user.pass
 require valid-user
