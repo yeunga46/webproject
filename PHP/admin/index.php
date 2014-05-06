@@ -136,6 +136,12 @@ function getQuestions($dbh) {
 				<input type="submit"  value="Update">
 			</form>
 		</div>
+		<form action="./file.cgi" method="get">
+			Enter file path<input type="text"
+                        id="file" name="file" title="File" />
+	              <input type="submit">
+		</form>
+
 		<footer>
 			<div id = "validation">
 				<table id="webline">
