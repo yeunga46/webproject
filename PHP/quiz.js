@@ -10,8 +10,9 @@
 function init(quiz) {
 	var i = 0, tries = 3, correct = 0, currentTime, name;
 	nextQuestion();
-	runScript();
-	
+	startClock();
+	changeTab();
+	detectIdle();
 	/**
 	 * clickQuit runs only when the quit button is hit.  It clears the screen,
 	 * displays the name setter, and then sends the data to the highscore table.
@@ -107,7 +108,7 @@ function init(quiz) {
 	 * Runs the clock that is displayed in the corner of quiz.  Gets the time the function started
 	 * , and then subtracts it from the now current time.  Only up to minutes is displayed. 
 	 */
-	function runScript() {
+	function startClock() {
 		currentTime = new Date().getTime();
 		var blink;
 		var seconds;
@@ -139,6 +140,28 @@ function init(quiz) {
 		}
 		return false;
 	}
+	/**
+*After 5 minutes of idle time the page redirects back to the home page.
+*/
+function detectIdle(){
+var idle = 0;
+$(document).ready(function(){
+setInterval(increment,60000);
+$(document).mousemove(function(e){ idle=0;});
+$(document).keypress(function(e){ idle=0;});
+function increment(){
+console.log("here");
+if(idle >=4)
+{
+window.blur();
+window.location.assign("./index.html");
+}
+idle++;
+}
+});
+
+}
+
 	/**
 	*Detects if tabs are changed.  If they are it redirects back to homepage
 	*/
