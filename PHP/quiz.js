@@ -139,6 +139,16 @@ function init(quiz) {
 		}
 		return false;
 	}
+	/**
+	*Detects if tabs are changed.  If they are it redirects back to homepage
+	*/
+	function changeTab(){
+	var timer = setInterval( function(){
+ 	if(document.hidden) {
+ 	window.location.assign("./index.html");
+	}
+	});
+	}
 
         /**
          * Gets the next question in the quiz array, and then displays the forms and questions for answering them.
